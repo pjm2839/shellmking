@@ -13,7 +13,7 @@ int main(void)
 		scanf("%s",buffer);
 		getchar();
 		comlen = strlen(buffer);// '\0'을 제외한 문자의 개수를 comlen에 저장
-		if(strcmp(buffer,"exit") == 0)// exit가 입력되면 강제로 나옴
+		if(strcmp(buffer,"byebye") == 0)// exit가 입력되면 강제로 나옴
 			return -1;
 		buffer[20] = 0;//버퍼를 비우기위해서
 		printf("\n");
