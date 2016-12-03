@@ -1,0 +1,17 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+
+int main(void)
+{
+
+//inode 1 root 
+if() //  디렉
+  printf("error : mtfs exists.");
+  
+
+
+	}
+	return 0;
+}
