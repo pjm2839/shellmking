@@ -5,6 +5,22 @@ unsigned int a[16]={0};// inode리스트 사용유무를 알기위한 a는 4바�
 unsigned int b[16]={0};//데이터블록 사용유무를 알기위한 b는 "
 unsigned int c= 2147483648;
 
+typedef sturct superblock{
+  int total_inode;//총 inode개수
+  int inode[];
+ int total_block;//전체 블록의 개수
+  int block[];//블록의 사용하는지 안 하는지
+  int size_block;//블록의 크기
+      int freeblock;//할당되지 않은 블록의 개수
+      struct super_finder *head;
+  }superblock;
+ 
+  typedef struct super_finder{
+      char name[5];
+	  int inodenumber;
+      struct super_finder *next;
+  }super_finder;
+
 
 for(;index_find<16;index_find++)
 	{	 
