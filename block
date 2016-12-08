@@ -1,0 +1,16 @@
+int main(){
+        char a[128];
+        FILE *x, *y;
+        int size,block_num,adding_block;
+        x=fopen(" ",rb);
+        y=fopen(" ",wb);
+
+        fseek( x, 0, SEEK_END);
+        size= ftell(x);
+        block_num=size/128+1;
+        adding_block=size%128;
+
+        return 0;
+}
+
+
