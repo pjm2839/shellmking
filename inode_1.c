@@ -35,7 +35,7 @@ typedef struct inode{// inode는 원래 파일 이름은 저장을 안함 고유
 		   }inode;
 inode vs;
 strcpy(vs.mkdate,mkdate);
-printf("vsmkdate에 값 :  %s",vs.mkdate);
+printf("vsmkdate에 값 :  %s",vs.mkdate);//ffwtwt
 return 0;
 }
 
