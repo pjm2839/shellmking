@@ -2,7 +2,7 @@
 #include<string.h>
 char filename[5],filename_new[5];
 char tmp[128];
-char storage[1024][128];
+char storage[1024][128]=0;
 int filesize,numblock,numblock_remain,check;
 FILE *ofp,*ifp;
 int block_case=0;
