@@ -1,5 +1,8 @@
 //대략적으로 이렇게하고 슈퍼블록으로 storage[1024][128]의 정보를 계속 보내고 받고 하면 끝날듯.
 #include<string.h>
+
+
+Data_block(char* filename, char* filename_new){
 char filename[5],filename_new[5];
 char tmp[128];
 char storage[1024][128]={0};
@@ -72,4 +75,7 @@ else if(block_case == 3)
                 }
                 ;
         }
+}
+
+return storage_on; 
 }
