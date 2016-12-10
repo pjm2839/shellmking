@@ -3,6 +3,7 @@
 char filename[5],filename_new[5];
 char tmp[128];
 char storage[1024][128];
+int i=0;//시그윈에선i를해놓고for문을돌려야되내f
 int filesize,numblock,numblock_remain,check;
 FILE *ofp,*ifp;
 int block_case=0;
@@ -37,7 +38,7 @@ else if(box	> 1)
 	block_case =1;	//direct block으로
 
 if(block_case == 1)
-{       for(int i=0; i<1024; i++){
+{       for(i=0; i<1024; i++){
                 if(storage[i]==0){
 	                fread(&tmp,sizeof(tmp),1,ofp);
 	                fwrite(&tmp,sizeof(tmp),1,&storage[i]);
@@ -49,7 +50,7 @@ if(block_case == 1)
 	else if(block_case == 2)
 while(check)
 { 
-        for(int i=0; i<1024; i++){
+        for(i=0; i<1024; i++){
                 if(storage[i]==0){
 	                check= fread(&tmp,sizeof(tmp),1,ofp);
 	                fwrite(&tmp,sizeof(tmp),1,&storage[i]);
@@ -62,7 +63,7 @@ while(check)
 else if(block_case == 3)
 	while(check)
 {
-	  for(int i=0; i<1024; i++){
+	  for(i=0; i<1024; i++){
                 if(storage[i]==0){
 	                check= fread(&tmp,sizeof(tmp),1,ofp);
 	                fwrite(&tmp,sizeof(tmp),1,&storage[i]);
