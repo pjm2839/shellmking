@@ -2,18 +2,15 @@
 #include<time.h>
 #include<string.h>
 #include<stdlib.h>
-
-typedef struct double_indirect{
-	int datablock_ition[120*120];
-	double_number_get_inode(&datablock_ition)
-}double_indirect;
-
 typedef struct single_indirect{
-	int datablock_pos[120];
+	int datablock_pos_single[120];
 	single_number_get_inode(&datablock_pos)//함수에를 만들어서 데이터블록에서 받은 것을 pos 배열에다가 담아놓기 
-	struct double_indirect *next;
 }single_indirect;
 
+typedef struct double_indirect{
+	int datablock_pos_double[120*120];
+	double_number_get_inode(&datablock_ition)
+}double_indirect;
 
 typedef struct inode{// inode는 원래 파일 이름은 저장을 안함 고유 번호로 이용함.
 	int number;//고유넘버 는 슈퍼블록에에서 받아오기
@@ -21,12 +18,12 @@ typedef struct inode{// inode는 원래 파일 이름은 저장을 안함 고유
 	char filetype;//파일의 유형
 	int size_file;//파일의 크기 데이터블록에서 받아오기
 	int direct_block;
+	struct inode *next;
 	struct single_indirect *single;//*next처럼 이용해서 연결리스트로 들어가게 하는 것이 될 수 있다.
+	struct double_indirect *doub;
 }inode;
 
-inode *inode_head[512],inodelist[512];//
-for (int a=0;a<512;a++)
-inode_head[i] = &inodelist[i];//시간이 없어서 이렇게 해야할 것 같다. 내능력밖이다..... 각 포인터에 각 아이노드 리스트를 연결함
+inode *inode_head,*p,**double_head;//doublehead는 더블인다이렉트블록에 접근하기 위한것임, head는 inode구조체에 가장 맨 앞에 주소를 가지고 있으며 p를 움직여서 그 안에 넣어 주는 것임
 
 void checktim(int koreatime[26]){
 	struct tm *t;
@@ -42,8 +39,8 @@ void checktim(int koreatime[26]){
 	sprintf(koreatime,"%d년 %d월 %d일 %d시 %d분 %d초",year,mon,mday,hour,min,sec);
 }
 
-/*   ************처음에 이렇게 하려고 했는데 지금 시간이 없어서 이걸 못 쓸 것 같음 그래서 새로 만들 것임
-void date_input(int inode_number){//이건 안 쓸 것 같음
+
+void date_input(int inode_number){
 	int mkdate[26];
 	int time_align=0;
 	checktim(&mkdate);//필요할때만 쓰게 함수로 따로 빼놔야겠음
@@ -55,16 +52,6 @@ void date_input(int inode_number){//이건 안 쓸 것 같음
 	p=repeating_inter_list(inode_number);//함수만든거
 	strcpy(p->makdate,mkdate);
 	p = inode_head;//다시 원래 head주소로 돌아옴
-}
-*/
-
-void date_input(int inode_number){//이것을 쓸 예정임
-	int mkdate[26];
-	int time_align=0;
-	chetim(&mkdate);//필요할때만 쓰게 함수로 때어놔야하는뎅??
-	if(inode_number == -1)
-		printf("inode리스트를 다 쓰고 있거나 오류가 발생했습니다.");
-	strcpy(inode_head[inode_number]->mkdate,mkdate);
 }
 
 void making_linked_inode(int num_link){
