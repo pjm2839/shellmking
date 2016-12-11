@@ -1,0 +1,92 @@
+#include <string.h>
+#include <stdio.h>
+
+
+void Data_block(char* filename, char* filename_new,char* storage_on){
+char tmp[128];
+char storage[1024][128]={0};
+int i=0;//시그윈에선i를해놓고for문을돌려야되내f
+int j=0;
+int filesize,numblock,numblock_remain,check;
+FILE *ofp,*ifp;
+int block_case=0;
+char direct[128];
+if((ofp = fopen(filename,"rb")) == NULL)
+printf("파일을 여는데 오류가 발생되었습니다.");
+
+//if((ifp = fopen(filename_new,"wb")) == NULL)
+//printf("파일을 쓰는데 오류가 발생되었습니다.");
+int k=0;
+
+
+fseek(ofp,0,SEEK_END);
+filesize=ftell(ofp);
+rewind(ofp);
+if(filesize>128)
+{
+        if((filesize%128) != 0)
+                numblock= filesize/128+1;
+        else
+                numblock = filesize/128;
+}
+else numblock =1;
+
+
+//printf("총 필요한 데이터블록은 %d 이다. ",box);
+if(numblock>102 && numblock<102*102)
+        block_case = 3;//double indirect block으로
+else if(numblock        > 1)
+        block_case = 2;//single indirect block으로
+        else
+        block_case =1;  //direct block으로
+
+if(block_case == 1)
+{       for(i=0; i<1024; i++){
+                if(storage_on[i]==0){
+                        fread(&tmp,sizeof(tmp),1,ofp);
+                        for(j=0; j<128; j++)
+                                storage[i][j]=tmp[j];
+                        storage_on[i]=1;
+                        break;
+                }
+                ;
+        }
+}
+        else if(block_case == 2)
+while(check)
+{       for(i=0; i<1024; i++){
+                if(storage_on[i]==0){
+                        check=fread(&tmp,sizeof(tmp),1,ofp);
+                        for(j=0; j<128; j++)
+                                storage[i][j]=tmp[j];
+                        storage_on[i]=1;
+                        break;
+                }
+                ;
+        }
+}
+else if(block_case == 3)
+        while(check)
+{       for(i=0; i<1024; i++){
+                if(storage_on[i]==0){
+                        check=fread(&tmp,sizeof(tmp),1,ofp);
+                        for(j=0; j<128; j++)
+                                storage[i][j]=tmp[j];
+                        storage_on[i]=1;
+                        break;
+                }
+                ;
+        }
+}
+}
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
