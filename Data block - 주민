@@ -3,7 +3,6 @@
 
 
 Data_block(char* filename, char* filename_new){
-char filename[5],filename_new[5];
 char tmp[128];
 char storage[1024][128]={0};
 char storage_on[1024];
