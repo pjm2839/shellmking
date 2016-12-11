@@ -1,0 +1,60 @@
+#include <stdio.h>
+
+int cp(){
+  int i=0, j=0;// for
+  int numblock; // my_sourse_file의 numblock 수
+  char numblock_where[1024]={0}; //사용중인 storage 번호
+  char my_sourse_file[20];
+  char dest_file[20];
+  scanf("%s %s",my_sourse_file, dest_file);
+//my_sourse_file의 numblock 수를지정하고 사용중인 storage 번호를 알려준다 즉 storage[i] 에서 몇번째 i를 사용하는지.
+
+
+if(numblock>102 && numblock<102*102) 
+	block_case = 3;//double indirect block으로
+else if(box	> 1)	
+	block_case = 2;//single indirect block으로
+	else
+	block_case =1;	//direct block으로
+
+if(block_case == 1)
+{  
+for(j=0
+for(i=0; i<1024; i++){
+                if(storage_on[i]==0){
+	                
+	                
+			storage_on[i]=1;
+	                break;
+                }
+                ;
+        }
+}
+	else if(block_case == 2)
+while(check)
+{       for(i=0; i<1024; i++){
+                if(storage_on[i]==0){
+	                fread(&tmp,sizeof(tmp),1,ofp);
+	                fwrite(&tmp,sizeof(tmp),1,&storage[i]);
+			storage_on[i]=1;
+	                break;
+                }
+                ;
+        }
+}
+else if(block_case == 3)
+	while(check)
+{       for(i=0; i<1024; i++){
+                if(storage_on[i]==0){
+	                fread(&tmp,sizeof(tmp),1,ofp);
+	                fwrite(&tmp,sizeof(tmp),1,&storage[i]);
+			storage_on[i]=1;
+	                break;
+                }
+                ;
+        }
+}
+
+
+  return 0;
+  }
