@@ -11,8 +11,8 @@ int i;//i는 data블록사용유무를 슈퍼블록에서 읽어오고나서 사
 if((ofp = fopen(filename,"rb")) == NULL)
 printf("파일을 여는데 오류가 발생되었습니다.");
 
-if((ifp = fopen(filename_new,"wb")) == NULL)
-printf("파일을 쓰는데 오류가 발생되었습니다.");
+//if((ifp = fopen(filename_new,"wb")) == NULL)
+//printf("파일을 쓰는데 오류가 발생되었습니다.");
 int k=0;//싱글인다이렉트블록만들때 쓰려고 
 
 
@@ -29,7 +29,7 @@ if(filesize>128)
 else numblock =1;// 128바이트도 안되면 그냥 다이렉트로 해야하니까 box 즉 block은 1개이다.
 
 
-printf("총 필요한 데이터블록은 %d 이다. ",box);
+//printf("총 필요한 데이터블록은 %d 이다. ",box);
 if(numblock>102 && numblock<102*102) 
 	block_case = 3;//double indirect block으로
 else if(box	> 1)	
