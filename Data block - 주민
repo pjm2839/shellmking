@@ -2,7 +2,7 @@
 #include<string.h>
 
 
-Data_block(char* filename, char* filename_new){
+char* Data_block(char* filename, char* filename_new){
 char filename[5],filename_new[5];
 char tmp[128];
 char storage[1024][128]={0};
@@ -15,8 +15,8 @@ char direct[128];
 if((ofp = fopen(filename,"rb")) == NULL)
 printf("파일을 여는데 오류가 발생되었습니다.");
 
-if((ifp = fopen(filename_new,"wb")) == NULL)
-printf("파일을 쓰는데 오류가 발생되었습니다.");
+//if((ifp = fopen(filename_new,"wb")) == NULL)
+//printf("파일을 쓰는데 오류가 발생되었습니다.");
 int k=0;
 
 
@@ -33,7 +33,7 @@ if(filesize>128)
 else numblock =1;
 
 
-printf("총 필요한 데이터블록은 %d 이다. ",box);
+//printf("총 필요한 데이터블록은 %d 이다. ",box);
 if(numblock>102 && numblock<102*102) 
 	block_case = 3;//double indirect block으로
 else if(box	> 1)	
