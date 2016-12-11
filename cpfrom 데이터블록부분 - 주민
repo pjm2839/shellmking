@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int cpfrom(){
+  char my_sourse_file[20];
+  char dest_file[20];
+  scanf("%s %s",my_sourse_file, dest_file);
+
+  Data_block(my_sourse_file, dest_file);
+  
+  return 0;
+  }
